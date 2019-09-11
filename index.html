@@ -1,14 +1,37 @@
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
 
-  <title>ExtrAngram - LV</title>
+  <title>ExtrAnagram - LV</title>
 
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 
 </head>
 
 <body>
+  <canvas id="plot" width="300" height="300"></canvas>
+
+  <input type="text" id="in" oninput="checkScreen();" autofocus spellcheck="false">
+
+  <div id="statwrap">
+    <div class="block" id="daudzums">
+      <div class="ctext"><span id="iespejamovardudaudzums">0</span> iespējami vārdi</div>
+    </div>
+    <div class="block" id="animatrum">
+      <div class="ctexth">Animācijas ātrums:</div><input type="range" min="20" max="180" value="120" class="slider" id="atrums">
+    </div>
+    <div class="block" id="dati">
+      <div class="ctext" id="dati"></div>
+    </div>
+  </div>
+
+  <button type="button" id="random" onclick="transform();" onkeypress="enterCheck(event);">Transformēt nejauši</button>
+
+  <script src="js/vardi.js"></script>
+  <script src="js/blockData.js"></script>
   <script src="js/draw.js"></script>
 </body>
+
 </html>

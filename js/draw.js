@@ -31,7 +31,7 @@ var scale = 0.5;
 images.dot.pic.src = "images/rsz_dot.png";
 images.i.pic.src = "images/rsz_i.png";
 images.h.pic.src = "images/rsz_h.png";
-images.c.pic.src = "images/rsz_c.png";
+images.c.pic.src = "images/c.png";
 images.s.pic.src = "images/s.png";
 
 let inputString = "";

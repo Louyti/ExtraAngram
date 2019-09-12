@@ -67,27 +67,6 @@ function display(string) {
   }
 }
 
-function getValue(string) {
-  let ret = {
-    c: 0,
-    h: 0,
-    i: 0,
-    dot: 0,
-    s: 0
-  };
-  for (i of string) {
-    let segments = blockData.letters[i];
-    try{
-      for (o of segments) {
-        ret[o.type]++;
-      }
-    } catch (e) {
-      //console.log(string);
-    }
-  }
-  return ret;
-}
-
 function prepare(string) {
   let ret = {
     c: [],
@@ -163,6 +142,25 @@ function drawAnimation(key, time) {
   }
 }
 
+function getValue(string) {
+  let ret = {
+    i: 0,
+    c: 0,
+    h: 0,
+    s: 0,
+    dot: 0
+  };
+  for (i of string) {
+    let segments = blockData.letters[i];
+    try {
+      for (o of segments) {
+        ret[o.type]++;
+      }
+    } catch (e) {}
+  }
+  return ret;
+}
+
 function findwords(str1) {
   let ret = [];
   for (vards of vardi) {
@@ -172,12 +170,39 @@ function findwords(str1) {
   return ret;
 }
 
-function findword(str1) {
-  for (vards of vardi) {
-    let tvards = vards.toLowerCase();
-    if (compareWords(str1, tvards)) return tvards;
+function findwordsplus(str1) {
+  let ret = [];
+  let gv = getValue(str1);
+  for (i = 0; i < vardi.length; i++) {
+    if(isEquivalent(wordscores[i], gv)) ret.push(vardi[i].toLowerCase());
   }
-  return null;
+  return ret;
+}
+
+function isEquivalent(a, b) {
+    // Create arrays of property names
+    var aProps = Object.getOwnPropertyNames(a);
+    var bProps = Object.getOwnPropertyNames(b);
+
+    // If number of properties is different,
+    // objects are not equivalent
+    if (aProps.length != bProps.length) {
+        return false;
+    }
+
+    for (var i = 0; i < aProps.length; i++) {
+        var propName = aProps[i];
+
+        // If values of same property are not equal,
+        // objects are not equivalent
+        if (a[propName] !== b[propName]) {
+            return false;
+        }
+    }
+
+    // If we made it this far, objects
+    // are considered equivalent
+    return true;
 }
 
 function compareWords(val1, val2) {
@@ -187,6 +212,14 @@ function compareWords(val1, val2) {
     if (get1[i] !== get2[i]) return false;
   }
   return true;
+}
+
+function findword(str1) {
+  for (vards of vardi) {
+    let tvards = vards.toLowerCase();
+    if (compareWords(str1, tvards)) return tvards;
+  }
+  return null;
 }
 
 function transform() {
@@ -234,6 +267,8 @@ node.addEventListener("keyup", (event) => {
 });
 
 images.s.pic.onload = () => {
+  //launch();
+  //longeth();
   display(inputString);
   //launchAnimation(inputString, outputString, 100);
 };

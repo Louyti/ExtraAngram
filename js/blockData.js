@@ -724,19 +724,35 @@ const blockData = {
     v: [
       {
         type: 'i',
-        level: '0',
-        rotation: '20',
-        align: '100',
+        level: '-0.25',
+        rotation: '33',
+        align: '80',
         scx: '1',
-        scy: '1.1'
+        scy: '0.6'
       },
       {
         type: 'i',
-        level: '0',
-        rotation: '-20',
-        align: '-100',
+        level: '-0.25',
+        rotation: '-33',
+        align: '-80',
         scx: '1',
-        scy: '1.1'
+        scy: '0.6'
+      },
+      {
+        type: 'i',
+        level: '0.24',
+        rotation: '0',
+        align: '-160',
+        scx: '1',
+        scy: '0.54'
+      },
+      {
+        type: 'i',
+        level: '0.24',
+        rotation: '0',
+        align: '160',
+        scx: '1',
+        scy: '0.54'
       }
     ],
     z: [
